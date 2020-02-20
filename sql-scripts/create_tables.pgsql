@@ -1,7 +1,8 @@
-DROP TABLE IF EXISTS lessons;
-DROP TABLE IF EXISTS clients;
-DROP TABLE IF EXISTS employees;
-DROP TABLE IF EXISTS cars;
+DROP TABLE IF EXISTS lessons CASCADE;
+DROP TABLE IF EXISTS clients CASCADE;
+DROP TABLE IF EXISTS interviews CASCADE;
+DROP TABLE IF EXISTS employees CASCADE;
+DROP TABLE IF EXISTS cars CASCADE;
 
 DROP TYPE IF EXISTS STATUS;
 DROP TYPE IF EXISTS TITLE;
@@ -28,6 +29,7 @@ CREATE TABLE clients (
     birth DATE NOT NULL,
     car INTEGER REFERENCES cars(car) NOT NULL,
     teacher INTEGER REFERENCES employees(emp) NOT NULL,
+    attempts INTEGER DEFAULT 0,
     status STATUS DEFAULT 'not_ready' NOT NULL,
     pass_date DATE DEFAULT NULL
 );
@@ -36,5 +38,11 @@ CREATE TABLE lessons (
     lesson SERIAL PRIMARY KEY,
     client INTEGER REFERENCES clients(client) NOT NULL,
     teacher INTEGER REFERENCES employees(emp) NOT NULL,
+    start TIMESTAMP NOT NULL
+);
+
+CREATE TABLE interviews (
+    interview SERIAL PRIMARY KEY,
+    employee INTEGER REFERENCES employees(emp) NOT NULL,
     start TIMESTAMP NOT NULL
 );
