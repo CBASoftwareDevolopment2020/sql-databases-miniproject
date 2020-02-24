@@ -74,10 +74,10 @@ lName = [
 title = ["auto_technicians", "administrative_staff"];
 
 function ranDate(start, dur) {
-	const year = parseInt(start + Math.random() * dur);
-	let month = "0" + parseInt(1 + Math.random() * 12);
+	const year = Math.floor(start + Math.random() * dur);
+	let month = "0" + Math.floor(1 + Math.random() * 12);
 	month = month.slice(-2);
-	let day = parseInt(1 + Math.random() * 30);
+	let day = Math.floor(1 + Math.random() * 30);
 	if (month == 2) {
 		day = 1 + (day % 27);
 	}
@@ -87,17 +87,17 @@ function ranDate(start, dur) {
 }
 
 function ranTime() {
-	const h = "0" + parseInt(Math.random() * 24);
-	const m = "0" + parseInt(Math.random() * 4) * 15;
+	const h = "0" + Math.floor(Math.random() * 24);
+	const m = "0" + Math.floor(Math.random() * 4) * 15;
 
 	return h.slice(-2) + ":" + m.slice(-2);
 }
 
 function ranName() {
 	return (
-		fName[parseInt(Math.random() * fName.length)] +
+		fName[Math.floor(Math.random() * fName.length)] +
 		" " +
-		lName[parseInt(Math.random() * lName.length)]
+		lName[Math.floor(Math.random() * lName.length)]
 	);
 }
 
@@ -130,9 +130,9 @@ tmpArr = [];
 arr.push("insert into clients (name, birth, car, teacher) values");
 for (let i = 0; i < numClients; i++) {
 	tmpArr.push(
-		`('${ranName()}', '${ranDate(1950, 50)}', ${parseInt(
+		`('${ranName()}', '${ranDate(1950, 50)}', ${Math.floor(
 			1 + Math.random() * numCars
-		)}, ${parseInt(1 + Math.random() * numEmps)})`
+		)}, ${Math.floor(1 + Math.random() * numEmps)})`
 	);
 }
 
@@ -141,11 +141,11 @@ tmpArr = [];
 
 arr.push("insert into lessons (client, teacher, start) values ");
 for (let i = 0; i < numClients; i++) {
-	const rnd = parseInt(1 + Math.random() * 19);
-	const emp = parseInt(1 + Math.random() * numIns);
+	const rnd = Math.floor(1 + Math.random() * 19);
+	const emp = Math.floor(1 + Math.random() * numIns);
 	for (let i = 0; i < rnd; i++) {
 		tmpArr.push(
-			`(${parseInt(1 + Math.random() * numClients)}, ${emp}, '${ranDate(
+			`(${Math.floor(1 + Math.random() * numClients)}, ${emp}, '${ranDate(
 				2017,
 				5
 			)} ${ranTime()}')`
@@ -158,8 +158,8 @@ tmpArr = [];
 
 arr.push("insert into interviews (employee, client, start) values ");
 for (let i = 0; i < numClients; i++) {
-	const emp = parseInt(1 + Math.random() * numIns);
-	const client = parseInt(1 + Math.random() * numClients);
+	const emp = Math.floor(1 + Math.random() * numIns);
+	const client = i;
 
 	tmpArr.push(`(${emp}, ${client}, '${ranDate(2017, 3)} ${ranTime()}')`);
 }
