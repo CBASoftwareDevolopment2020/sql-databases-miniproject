@@ -44,5 +44,6 @@ CREATE TABLE lessons (
 CREATE TABLE interviews (
     interview SERIAL PRIMARY KEY,
     employee INTEGER REFERENCES employees(emp) NOT NULL,
+    client INTEGER REFERENCES clients(client) NOT NULL,
     start TIMESTAMP NOT NULL
 );
