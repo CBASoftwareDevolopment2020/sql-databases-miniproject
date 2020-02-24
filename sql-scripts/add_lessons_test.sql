@@ -11,4 +11,7 @@ SELECT add_lesson(1, 1, '2019-11-11 12:00');
 -- NOTICE:  Date must be after current date
 
 SELECT add_lesson(2001, 1, '2021-11-11 12:00');
--- NOTICE:  NOTICE:  An interview is required to book lessons
+-- NOTICE:  An interview is required to book lessons
+
+SELECT add_lesson(1, 1, '2021-11-11 12:00');
+-- NOTICE:  Client 1 successfully added to lessons

@@ -28,5 +28,7 @@ BEGIN
     
     ELSE RAISE NOTICE 'An interview is required to book lessons';
     END IF;
+
+    -- avoid multiple lessons at the same time
 END;
 $$ LANGUAGE PLPGSQL;
