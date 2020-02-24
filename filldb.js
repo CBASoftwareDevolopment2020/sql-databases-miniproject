@@ -105,13 +105,15 @@ let arr = [];
 let tmpArr = [];
 const numClients = 2000;
 const numEmps = 30;
-const numCars = 20;
-const numIns = numEmps - numCars;
+const numIns = 20;
+const numCars = numIns;
+const numAdmins = 3;
 
 arr.push("insert into employees (name, title) values");
 for (let i = 0; i < numEmps; i++) {
 	if (i <= numIns) tmpArr.push(`('${ranName()}', 'instructor')`);
-	else tmpArr.push(`('${ranName()}', '${title[parseInt(Math.random() * title.length)]}')`);
+	else if (i <= numIns + numAdmins) tmpArr.push(`('${ranName()}', 'administrative_staff')`);
+	else tmpArr.push(`('${ranName()}', 'auto_technicians')`);
 }
 
 arr.push(tmpArr.join(", \n") + ";");
@@ -149,6 +151,17 @@ for (let i = 0; i < numClients; i++) {
 			)} ${ranTime()}')`
 		);
 	}
+}
+
+arr.push(tmpArr.join(", \n") + ";");
+tmpArr = [];
+
+arr.push("insert into interviews (employee, client, start) values ");
+for (let i = 0; i < numClients; i++) {
+	const emp = parseInt(1 + Math.random() * numIns);
+	const client = parseInt(1 + Math.random() * numClients);
+
+	tmpArr.push(`(${emp}, ${client}, '${ranDate(2017, 3)} ${ranTime()}')`);
 }
 
 arr.push(tmpArr.join(", \n") + ";");
