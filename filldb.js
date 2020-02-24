@@ -110,9 +110,9 @@ const numCars = numIns;
 const numAdmins = 3;
 
 arr.push("insert into employees (name, title) values");
-for (let i = 0; i < numEmps; i++) {
-	if (i <= numIns) tmpArr.push(`('${ranName()}', 'instructor')`);
-	else if (i <= numIns + numAdmins) tmpArr.push(`('${ranName()}', 'administrative_staff')`);
+for (let i = 1; i < numEmps; i++) {
+	if (i < numIns) tmpArr.push(`('${ranName()}', 'instructor')`);
+	else if (i < numIns + numAdmins) tmpArr.push(`('${ranName()}', 'administrative_staff')`);
 	else tmpArr.push(`('${ranName()}', 'auto_technicians')`);
 }
 
@@ -158,7 +158,7 @@ tmpArr = [];
 
 arr.push("insert into interviews (employee, client, start) values ");
 for (let i = 1; i < numClients; i++) {
-	const emp = Math.floor(1 + Math.random() * numIns);
+	const emp = Math.floor(numIns + Math.random() * numAdmins);
 	const client = i;
 
 	tmpArr.push(`(${emp}, ${client}, '${ranDate(2017, 3)} ${ranTime()}')`);
