@@ -28,7 +28,7 @@ CREATE TABLE clients (
     name VARCHAR(30) NOT NULL,
     birth DATE NOT NULL,
     car INTEGER REFERENCES cars(car) NOT NULL,
-    teacher INTEGER REFERENCES employees(emp) NOT NULL,
+    instructor INTEGER REFERENCES employees(emp) NOT NULL,
     attempts INTEGER DEFAULT 0,
     status STATUS DEFAULT 'not_ready' NOT NULL,
     pass_date DATE DEFAULT NULL
@@ -37,13 +37,13 @@ CREATE TABLE clients (
 CREATE TABLE lessons (
     lesson SERIAL PRIMARY KEY,
     client INTEGER REFERENCES clients(client) NOT NULL,
-    teacher INTEGER REFERENCES employees(emp) NOT NULL,
+    instructor INTEGER REFERENCES employees(emp) NOT NULL,
     start TIMESTAMP NOT NULL
 );
 
 CREATE TABLE interviews (
     interview SERIAL PRIMARY KEY,
     employee INTEGER REFERENCES employees(emp) NOT NULL,
-    client INTEGER REFERENCES clients(client) NOT NULL,
+    client INTEGER REFERENCES clients(client) NOT NULL UNIQUE,
     start TIMESTAMP NOT NULL
 );
