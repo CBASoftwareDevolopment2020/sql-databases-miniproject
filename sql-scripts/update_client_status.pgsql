@@ -5,7 +5,7 @@ DECLARE
     lessons INTEGER;
 BEGIN
     IF is_ready THEN
-        lessons := (SELECT COUNT(*) FROM lessons WHERE client_id = client AND start < NOW());
+        lessons := (SELECT COUNT(*) FROM lessons WHERE client = client_id AND start < NOW());
 
         IF lessons >= 10 THEN
             UPDATE clients
