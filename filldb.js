@@ -127,7 +127,7 @@ for (let i = 0; i < numCars; i++) {
 arr.push(tmpArr.join(", \n") + ";");
 tmpArr = [];
 
-arr.push("insert into clients (name, birth, car, teacher) values");
+arr.push("insert into clients (name, birth, car, instructor) values");
 for (let i = 0; i < numClients; i++) {
 	tmpArr.push(
 		`('${ranName()}', '${ranDate(1950, 50)}', ${Math.floor(
@@ -139,7 +139,7 @@ for (let i = 0; i < numClients; i++) {
 arr.push(tmpArr.join(", \n") + ";");
 tmpArr = [];
 
-arr.push("insert into lessons (client, teacher, start) values ");
+arr.push("insert into lessons (client, instructor, start) values ");
 for (let i = 0; i < numClients; i++) {
 	const rnd = Math.floor(1 + Math.random() * 19);
 	const emp = Math.floor(1 + Math.random() * numIns);
@@ -157,7 +157,7 @@ arr.push(tmpArr.join(", \n") + ";");
 tmpArr = [];
 
 arr.push("insert into interviews (employee, client, start) values ");
-for (let i = 0; i < numClients; i++) {
+for (let i = 1; i < numClients; i++) {
 	const emp = Math.floor(1 + Math.random() * numIns);
 	const client = i;
 
