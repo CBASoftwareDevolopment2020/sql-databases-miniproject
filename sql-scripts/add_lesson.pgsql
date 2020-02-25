@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS add_lesson;
-
 CREATE OR REPLACE PROCEDURE add_lesson(
     client_id INTEGER, instructor INTEGER, start TIMESTAMP
 )
@@ -35,7 +33,6 @@ BEGIN
     ELSE RAISE NOTICE 'An interview is required to book lessons';
     END IF;
 
-    -- avoid multiple lessons at the same time
 END;
 $$;
 

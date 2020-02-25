@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS add_lesson;
-
 CREATE OR REPLACE PROCEDURE add_client(
     name VARCHAR(30), birth DATE, instructor INTEGER, car INTEGER, interview_start TIMESTAMP
 )

@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS update_client_status_passed;
-
 CREATE OR REPLACE PROCEDURE update_client_status_passed(
     client_id INTEGER, passed BOOLEAN
 ) LANGUAGE PLPGSQL AS $$

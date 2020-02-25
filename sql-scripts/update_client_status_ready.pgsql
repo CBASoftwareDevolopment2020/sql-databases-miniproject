@@ -1,5 +1,3 @@
-DROP PROCEDURE IF EXISTS update_client_status_ready;
-
 CREATE OR REPLACE PROCEDURE update_client_status_ready(
     is_ready BOOLEAN, client_id INTEGER
 ) 
