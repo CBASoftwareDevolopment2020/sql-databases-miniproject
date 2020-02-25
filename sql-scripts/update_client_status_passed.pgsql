@@ -1,10 +1,11 @@
-CREATE OR REPLACE FUNCTION update_client_status_passed(
+DROP PROCEDURE IF EXISTS update_client_status_passed;
+
+CREATE OR REPLACE PROCEDURE update_client_status_passed(
     client_id INTEGER, passed BOOLEAN
-) RETURNS VOID AS $$
+) LANGUAGE PLPGSQL AS $$
 DECLARE
     isReady BOOLEAN;
 BEGIN
-
     IF passed THEN
         isReady := ((SELECT status FROM clients WHERE client = client_id) = 'ready');
 
@@ -23,4 +24,4 @@ BEGIN
 
     END IF;
 END;
-$$ LANGUAGE PLPGSQL;
+$$;

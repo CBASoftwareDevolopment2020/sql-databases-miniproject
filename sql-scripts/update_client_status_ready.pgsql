@@ -1,6 +1,9 @@
-CREATE OR REPLACE FUNCTION update_client_status_ready(
+DROP PROCEDURE IF EXISTS update_client_status_ready;
+
+CREATE OR REPLACE PROCEDURE update_client_status_ready(
     is_ready BOOLEAN, client_id INTEGER
-) RETURNS VOID AS $$
+) 
+LANGUAGE PLPGSQL AS $$
 DECLARE
     lessons INTEGER;
 BEGIN
@@ -22,4 +25,4 @@ BEGIN
         RAISE NOTICE 'Client status set to: not ready.';
     END IF;
 END;
-$$ LANGUAGE PLPGSQL;
+$$;
