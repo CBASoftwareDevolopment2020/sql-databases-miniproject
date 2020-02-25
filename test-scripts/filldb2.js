@@ -110,7 +110,7 @@ function ranTime() {
 	const h = "0" + Math.floor(Math.random() * 24);
 	const m = "0" + Math.floor(Math.random() * 4) * 15;
 
-	return h.slice(-2) + ":" + m.slice(-2);
+	return h.slice(-2) + ":00";
 }
 
 function latestDate(arr) {
@@ -255,6 +255,6 @@ data.push(clientToSql());
 
 data = data.join("\n");
 
-fs.writeFile("test-scripts/populate_tables.pgsql", data, (err) => {
+fs.writeFile("sql-scripts/populate_tables.pgsql", data, (err) => {
 	if (err) throw err;
 });
