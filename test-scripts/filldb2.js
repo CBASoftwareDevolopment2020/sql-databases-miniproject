@@ -255,6 +255,6 @@ data.push(clientToSql());
 
 data = data.join("\n");
 
-fs.writeFile("sql-scripts/populate_tables.pgsql", data, (err) => {
+fs.writeFile("test-scripts/populate_tables.pgsql", data, (err) => {
 	if (err) throw err;
 });
