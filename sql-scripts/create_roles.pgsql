@@ -12,7 +12,7 @@
 
 -- Revoke privileges from 'public' role
 REVOKE CREATE ON SCHEMA public FROM PUBLIC;
--- REVOKE ALL ON DATABASE miniproject1 FROM PUBLIC;
+REVOKE ALL ON DATABASE miniproject1 FROM PUBLIC;
 
 --
 
@@ -37,15 +37,17 @@ REVOKE CREATE ON SCHEMA public FROM PUBLIC;
 
 -- 
 
--- GRANT EXECUTE ON PROCEDURE add_client() TO administrative_staff;
--- GRANT EXECUTE ON PROCEDURE add_lesson() TO administrative_staff;
-GRANT EXECUTE ON FUNCTION get_work_load() TO administrative_staff;
-GRANT EXECUTE ON FUNCTION get_success_rate() TO administrative_staff;
+GRANT EXECUTE ON PROCEDURE add_client TO administrative_staff;
+GRANT EXECUTE ON PROCEDURE add_lesson TO administrative_staff;
+GRANT EXECUTE ON FUNCTION get_work_load TO administrative_staff;
+GRANT EXECUTE ON FUNCTION get_success_rate TO administrative_staff;
 
-GRANT EXECUTE ON PROCEDURE update_tech_check() TO auto_technician;
+GRANT EXECUTE ON PROCEDURE update_tech_check TO auto_technician;
 GRANT SELECT ON TABLE cars TO auto_technician;
 
--- GRANT EXECUTE ON PROCEDURE add_lesson() TO instructor;
-GRANT EXECUTE ON PROCEDURE update_client_status_ready() TO instructor;
-GRANT EXECUTE ON PROCEDURE update_client_status_passed() TO instructor;
-GRANT EXECUTE ON FUNCTION get_work_load() TO instructor;
+GRANT EXECUTE ON PROCEDURE add_lesson TO instructor;
+GRANT EXECUTE ON PROCEDURE update_client_status_ready TO instructor;
+GRANT EXECUTE ON PROCEDURE update_client_status_passed TO instructor;
+GRANT EXECUTE ON FUNCTION get_work_load TO instructor;
+
+GRANT EXECUTE ON FUNCTION get_work_load TO dummy;
