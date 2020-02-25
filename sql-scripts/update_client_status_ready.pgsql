@@ -1,6 +1,9 @@
-CREATE OR REPLACE FUNCTION update_client_status(
+DROP PROCEDURE IF EXISTS update_client_status_ready;
+
+CREATE OR REPLACE PROCEDURE update_client_status_ready(
     is_ready BOOLEAN, client_id INTEGER
-) RETURNS VOID AS $$
+) 
+LANGUAGE PLPGSQL AS $$
 DECLARE
     lessons INTEGER;
 BEGIN
@@ -10,12 +13,16 @@ BEGIN
         IF lessons >= 10 THEN
             UPDATE clients
             SET status = 'ready'
-            WHERE client = client;
+            WHERE client = client_id;
 
         ELSE RAISE NOTICE 'A minimum of 10 participated is required, only % acquired.', lessons;
         END IF;
     ELSE
+        UPDATE clients
+        SET status = 'not_ready'
+        WHERE client = client_id;
+        
         RAISE NOTICE 'Client status set to: not ready.';
     END IF;
 END;
-$$ LANGUAGE PLPGSQL;
+$$;

@@ -38,6 +38,7 @@ CREATE TABLE lessons (
     lesson SERIAL PRIMARY KEY,
     client INTEGER REFERENCES clients(client) NOT NULL,
     instructor INTEGER REFERENCES employees(emp) NOT NULL,
+    car INTEGER REFERENCES cars(car) NOT NULL,
     start TIMESTAMP NOT NULL
 );
 
