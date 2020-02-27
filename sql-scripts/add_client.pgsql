@@ -1,5 +1,5 @@
 CREATE OR REPLACE PROCEDURE add_client(
-    name VARCHAR(30), birth DATE, instructor INTEGER, car INTEGER, interview_start TIMESTAMP
+    name VARCHAR(30), birth DATE, car INTEGER, interview_start TIMESTAMP
 )
 LANGUAGE PLPGSQL AS $$
 DECLARE

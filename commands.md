@@ -27,13 +27,13 @@ _Show Specific Functions and Procedures_
 _Description_
 
 ```plpgsql
-CALL add_client(name VARCHAR(30), birth DATE, instructor INTEGER, car INTEGER, interview_start TIMESTAMP);
+CALL add_client(name VARCHAR(30), birth DATE, car INTEGER, interview_start TIMESTAMP);
 ```
 
 _Raise Notice: Too young to drive_
 
 ```plpgsql
-CALL add_client('Stephan', '2020-01-01', 1, 1, '2020-03-01');
+CALL add_client('Stephan', '2020-01-01', 1, '2020-03-01');
 ```
 
 ---
