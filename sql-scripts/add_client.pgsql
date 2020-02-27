@@ -15,9 +15,9 @@ BEGIN
         emp_id := (SELECT emp FROM admin_staff_work WHERE start != interview_start LIMIT 1);
         RAISE NOTICE 'emp_id:: %', emp_id;
 
-        IF emp_id THEN
+        IF emp_id > -1 THEN
             INSERT INTO clients (name, birth, instructor, car)
-            VALUES (name, birth, instructor, car)
+            VALUES (name, birth, emp_id, car)
             RETURNING client INTO client_id;
 
             INSERT INTO interviews (employee, client, start)

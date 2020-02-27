@@ -30,6 +30,13 @@ CREATE USER user_administrative_staff LOGIN PASSWORD '1234';
 
 --
 
+GRANT CONNECT ON DATABASE miniproject1 TO client;
+GRANT CONNECT ON DATABASE miniproject1 TO instructor;
+GRANT CONNECT ON DATABASE miniproject1 TO auto_technician;
+GRANT CONNECT ON DATABASE miniproject1 TO administrative_staff;
+
+--
+
 GRANT client TO user_client;
 GRANT instructor TO user_instructor;
 GRANT auto_technician TO user_auto_technician;

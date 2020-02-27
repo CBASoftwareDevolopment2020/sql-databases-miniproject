@@ -1,14 +1,14 @@
 CREATE OR REPLACE FUNCTION get_success_rate()
-RETURNS DECIMAL(5, 2) AS $$
+RETURNS FLOAT AS $$
 DECLARE
-    passed DECIMAL(5, 2);
-    total_attempts DECIMAL(5, 2);
+    passed FLOAT;
+    total_attempts FLOAT;
 BEGIN
     total_attempts := (SELECT SUM(attempts) FROM clients);
 
     IF total_attempts > 0 THEN
         passed := (SELECT COUNT(*) FROM archive);
-        RETURN CAST(passed / total_attempts * 100 AS DECIMAL(5, 2));
+        RETURN CAST(passed / total_attempts * 100 AS FLOAT);
 
     ELSE RETURN 0;
     END IF;
